@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Правила игры &quot;Охота на лис&quot;" Height="641.04" Width="548.4" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFF3F3F3">
-        <TextBlock x:Name="textBlockRulesGame" HorizontalAlignment="Center" Height="440" Margin="31,108,31.4,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="480" Padding="15,10">
-            <TextBlock.Background>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
-            </TextBlock.Background>
-        </TextBlock>
-        <Label Content="Правила игры" HorizontalAlignment="Center" Height="70" Margin="31,17,31.4,0" VerticalAlignment="Top" Width="480" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Globus" FontSize="36" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+        <Label Content="Правила игры" HorizontalAlignment="Center" Height="70" Margin="31,17,31.4,0" VerticalAlignment="Top" Width="480" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Impact" FontSize="36" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
         <WrapPanel HorizontalAlignment="Left" Height="30" Margin="10,564,0,0" VerticalAlignment="Top" Width="522">
             <Button Content="OK" IsDefault="True" Height="28" Width="82" Margin="427,1,0,0" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Click="Button_Click"/>
         </WrapPanel>
+        <TextBox x:Name="textBoxRulesGame" HorizontalAlignment="Left" Height="458" Margin="31,92,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="480" VerticalScrollBarVisibility="Auto">
+            <TextBox.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+            </TextBox.Background>
+        </TextBox>
     </Grid>
 </Window>

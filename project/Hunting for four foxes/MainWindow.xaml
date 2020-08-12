@@ -453,25 +453,25 @@
             <Button x:Name="i9ButtonComp" Content="" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="0,0,0,0" Grid.Row="9"  Grid.Column="9" Click="CommonButtonFox_Click"/>
 
 
-            <Label Content="А" Height="30" Width="30" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"  Margin="0,0,0,0" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Padding="2"/>
-            <Label Content="Б" Height="30" VerticalAlignment="Top" Width="30" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  Margin="0,0,0,0" Grid.Row="0"  Grid.Column="2" Padding="2"/>
-            <Label Content="В" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="3" Padding="2"/>
-            <Label Content="Г" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="4" Padding="2"/>
-            <Label Content="Д" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="5" Padding="2"/>
-            <Label Content="Е" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="6" Padding="2"/>
-            <Label Content="Ж" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="7" Padding="2"/>
-            <Label Content="З" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="8" Padding="2"/>
-            <Label Content="И" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="9" Padding="2"/>
+            <Label x:Name="coordinateCompA" Content="А" Height="30" Width="30" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"  Margin="0,0,0,0" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Padding="2"/>
+            <Label x:Name="coordinateCompB" Content="Б" Height="30" VerticalAlignment="Top" Width="30" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  Margin="0,0,0,0" Grid.Row="0"  Grid.Column="2" Padding="2"/>
+            <Label x:Name="coordinateCompC" Content="В" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="3" Padding="2"/>
+            <Label x:Name="coordinateCompD" Content="Г" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="4" Padding="2"/>
+            <Label x:Name="coordinateCompE" Content="Д" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="5" Padding="2"/>
+            <Label x:Name="coordinateCompF" Content="Е" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="6" Padding="2"/>
+            <Label x:Name="coordinateCompG" Content="Ж" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="7" Padding="2"/>
+            <Label x:Name="coordinateCompH" Content="З" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="8" Padding="2"/>
+            <Label x:Name="coordinateCompI" Content="И" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="0"  Grid.Column="9" Padding="2"/>
 
-            <Label Content="1" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top"  Margin="0,0,0,0" Grid.Row="1"  Grid.Column="0" Padding="2"/>
-            <Label Content="2" Height="30" VerticalAlignment="Top" Width="30" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  Margin="0,0,0,0" Grid.Row="2"  Grid.Column="0" Padding="2"/>
-            <Label Content="3" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="3"  Grid.Column="0" Padding="2"/>
-            <Label Content="4" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="4"  Grid.Column="0" Padding="2"/>
-            <Label Content="5" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="5"  Grid.Column="0" Padding="2"/>
-            <Label Content="6" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="6"  Grid.Column="0" Padding="2"/>
-            <Label Content="7" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="7"  Grid.Column="0" Padding="2"/>
-            <Label Content="8" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="8"  Grid.Column="0" Padding="2"/>
-            <Label Content="9" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="9"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp1" Content="1" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top"  Margin="0,0,0,0" Grid.Row="1"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp2" Content="2" Height="30" VerticalAlignment="Top" Width="30" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  Margin="0,0,0,0" Grid.Row="2"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp3" Content="3" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="3"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp4" Content="4" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="4"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp5" Content="5" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="5"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp6" Content="6" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="6"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp7" Content="7" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="7"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp8" Content="8" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="8"  Grid.Column="0" Padding="2"/>
+            <Label x:Name="coordinateComp9" Content="9" Height="30" Width="30" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="9"  Grid.Column="0" Padding="2"/>
 
         </Grid>
 
@@ -485,14 +485,39 @@
                 </MenuItem>
                 <MenuItem x:Name="menuItemHelp" Header="Помощь">
                     <MenuItem x:Name="menuItemViewHelp" Header="Посмотреть справку" HorizontalAlignment="Left" Margin="0,0,0,0" Width="209" Click="menuItemViewHelp_Click"/>
-                    <Separator HorizontalAlignment="Left" Width="206" Height="14" Margin="0,0,0,0"/>
+                    <Separator HorizontalAlignment="Left" Width="206"  Margin="0,0,0,0"/>
                     <MenuItem x:Name="menuItemAboutProgram" Header="О программе" HorizontalAlignment="Left" Margin="0,0,0,0" Width="209" Click="menuItemAboutProgram_Click"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
         <Button x:Name="deleteButton" Content="Сдаться! И узнать ответ" HorizontalAlignment="Left" Height="26" Margin="322,378.2,0,0" VerticalAlignment="Top" Width="172" Click="DeleteButton_Click" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <Label Content="Вы" HorizontalAlignment="Left" Height="54" Margin="125,6.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Globus" FontSize="36"/>
-        <Label Content="Компьютер" HorizontalAlignment="Left" Height="55" Margin="110.6,6.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="185" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Globus" FontSize="36" Grid.Column="1"/>
-        <Label x:Name="labelQuantity" Content="Число лис на поле = " HorizontalAlignment="Left" Height="26" Margin="244.6,388.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="159" FontStyle="Italic" HorizontalContentAlignment="Center" Grid.Column="1"/>
+        <Label Content="Вы" HorizontalAlignment="Left" Height="54" Margin="64,6.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="270" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Impact" FontSize="36"/>
+        <Label x:Name="labelRight" Content="Компьютер" HorizontalAlignment="Left" Height="55" Margin="68.6,6.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="265" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Impact" FontSize="36" Grid.Column="1"/>
+        <Label x:Name="labelQuantity" Content="Число лис на поле = " HorizontalAlignment="Left" Height="26" Margin="267.6,386.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="136" FontStyle="Italic" Grid.Column="1"/>
+        <Label x:Name="labelTypeGame" Content="Тип игры: " HorizontalAlignment="Left" Height="26" Margin="8,386.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="309" FontStyle="Italic"/>
+        <Label x:Name="labelNumberMovesOnlyUser" Content="0" HorizontalAlignment="Left" Height="108" Margin="65.6,67.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="270" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Impact" FontSize="75" Grid.Column="1"/>
+        <Label x:Name="labelRightCenter" Content="Пойманные лисы:" HorizontalAlignment="Center" Height="107" Margin="38.4,146.2,45,0" Grid.Row="1" Width="331" FontWeight="Bold" FontFamily="Impact" FontSize="36" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Grid.Column="1"/>
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="44.4,220.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="316">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="labelFox1"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+            <Label x:Name="labelFox2"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+            <Label x:Name="labelFox3"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="2"/>
+            <Label x:Name="labelFox4"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="3"/>
+            <Label x:Name="labelFox5"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+            <Label x:Name="labelFox6"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+            <Label x:Name="labelFox7"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+            <Label x:Name="labelFox8"  HorizontalAlignment="Center" Height="66" Margin="0" VerticalAlignment="Center" Width="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="3"/>
+        </Grid>
+        <Label x:Name="labelQuantityMoveUser" Content="Число ходов: " HorizontalAlignment="Left" Height="26" Margin="156,360.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" FontStyle="Italic"/>
+        <Label x:Name="labelQuantityMoveComp" Content="Число ходов: " HorizontalAlignment="Left" Height="26" Margin="155.4,360.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" FontStyle="Italic" Grid.Column="1"/>
     </Grid>
 </Window>

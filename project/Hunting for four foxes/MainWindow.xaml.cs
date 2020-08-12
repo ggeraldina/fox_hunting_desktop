@@ -32,9 +32,13 @@ namespace huntingFoxes
         private List<CellAndButtonLabel> cellAndButtonLabelTableLeft = new List<CellAndButtonLabel>();
         // Computer table of coordinates of buttons and labels
         private List<CellAndButtonLabel> cellAndButtonLabelTableRight = new List<CellAndButtonLabel>();
+        //
+        private List<Label> labelFoxes = new List<Label>();
         public int CurrentNumFoxes { get; set; }
         public string CurentBackgroundPath { get; set; }
-
+        public string CurrentTypeGame { get; set; }
+        public int CurrentUserNumberMoves { get; set; }
+        public int CurrentComputerNumberMoves { get; set; }
         public UserFoxesTable TableUserFoxes
         {
             get
@@ -60,17 +64,96 @@ namespace huntingFoxes
         public MainWindow()
         {
             InitializeComponent();
-            CurrentNumFoxes = 4;
-            CurentBackgroundPath = "";
-            UpdateOption();
-            labelQuantity.Content = "Число лис на поле = "+ CurrentNumFoxes.ToString();
-            tableUserFoxes = new UserFoxesTable(CurrentNumFoxes);
-            tableCompFoxes = new ComputerFoxesTable(CurrentNumFoxes);
-            CreateButtonLabelTableLeftRight();
-            UpdateLabel("userTable");
-            DisableAllButtons("userTable");
+            CreateNewGame();
+            
+        }
+        public void CreateNewGame()
+        {
+            CreateGameForAll();
+            if (CurrentTypeGame.Equals("На минимальное число ходов"))
+            {
+                CreateGameForOnlyUser();                
+            }
+            else
+            {
+                CreateGameForUserWithComputer();
+            }
         }
 
+        private void CreateGameForAll()
+        {
+            CurrentNumFoxes = 4;
+            CurentBackgroundPath = "";
+            CurrentTypeGame = "На минимальное число ходов";
+            CurrentUserNumberMoves = 0;
+            CurrentComputerNumberMoves = 0;
+            UpdateOption();
+            labelQuantity.Content = "Число лис на поле = " + CurrentNumFoxes.ToString();
+            labelTypeGame.Content = "Тип игры: " + CurrentTypeGame.ToString();
+            tableUserFoxes = new UserFoxesTable(CurrentNumFoxes);
+            CreateButtonLabelTableLeft();
+            CreateButtonLabelTableRight();
+            CreateListLabelFoxes();
+            VisibleAll("userTableButtons");
+            UpdateLabel("userTableButtons");
+            foreach (var item in labelFoxes)
+            {
+                item.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void CreateGameForOnlyUser()
+        {
+            EnableAll("userTableButtons");
+            labelRightCenter.Visibility = Visibility.Visible;
+            labelNumberMovesOnlyUser.Visibility = Visibility.Visible;
+            labelRight.Content = "Число ходов:";
+            DeleteFieldComputer();
+            // add pictures foxes
+            for (int i = 0; i < CurrentNumFoxes; i++)
+            {
+                labelFoxes[i].Visibility = Visibility.Visible;
+                labelFoxes[i].Background = new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/withoutFox.png")));
+            }
+        }
+
+        private void CreateGameForUserWithComputer()
+        {
+            tableCompFoxes = new ComputerFoxesTable(CurrentNumFoxes);
+            VisibleAll("computerTableButtons");
+            VisibleAll("computerTableLabels");
+            VisibleCoordinatesComputer(true);
+            labelNumberMovesOnlyUser.Visibility = Visibility.Collapsed;
+            labelRightCenter.Visibility = Visibility.Collapsed;
+            labelRight.Content = "Компьютер";
+            labelQuantityMoveComp.Visibility = Visibility.Visible;
+            labelQuantityMoveComp.Content = "Число ходов: 0";
+            labelQuantityMoveUser.Visibility = Visibility.Visible;
+            labelQuantityMoveUser.Content = "Число ходов: 0";
+            DisableAll("userTableButtons");
+            EnableAll("computerTableButtons");
+            UpdateLabel("computerTableButtons");
+        }
+
+        private void DeleteFieldComputer()
+        {
+            InvisibleAll("computerTableButtons");
+            InvisibleAll("computerTableLabels");
+            VisibleCoordinatesComputer(false);
+            labelNumberMovesOnlyUser.Content = CurrentUserNumberMoves.ToString();
+            labelQuantityMoveComp.Visibility = Visibility.Collapsed;
+            labelQuantityMoveUser.Visibility = Visibility.Collapsed;
+        }
+        private void CreateListLabelFoxes()
+        {
+            Label[] labels = {labelFox1, labelFox2, labelFox3,
+                             labelFox4, labelFox5, labelFox6,
+                             labelFox7, labelFox8};
+            foreach (var item in labels)
+            {
+                labelFoxes.Add(item);
+            }
+        }
         private void UpdateLabel(string flagTable)
         {           
             for (int i = 0; i < 9; i++)
@@ -80,7 +163,7 @@ namespace huntingFoxes
                     char valueCell;
                     switch (flagTable)
                     {
-                        case "userTable":
+                        case "userTableButtons":
                             valueCell = tableUserFoxes.TableFoxes[i][j].Value;
                             cellAndButtonLabelTableLeft[i * 9 + j].Label.Content = valueCell;
                             cellAndButtonLabelTableLeft[i * 9 + j].Button.Content = "";
@@ -94,7 +177,7 @@ namespace huntingFoxes
                                 cellAndButtonLabelTableLeft[i * 9 + j].Label.Background = new SolidColorBrush(Colors.Honeydew);
                             }
                             break;
-                        case "computerTable":
+                        case "computerTableButtons":
                             valueCell = tableCompFoxes.TableFoxes[i][j].Value;
                             cellAndButtonLabelTableRight[i * 9 + j].Label.Content = valueCell;
                             if (valueCell.Equals('f'))
@@ -114,50 +197,77 @@ namespace huntingFoxes
         }
         private void CommonButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).Visibility = Visibility.Collapsed;
-            int[] cellCoordinates = FindCoordinatesButton(((Button)sender), "left");
+            Button currentButton = ((Button)sender);            
+            CommonButtonGame(currentButton);
+            
+        }
+
+        private void CommonButtonGame(Button currentButton)
+        {
+            currentButton.Visibility = Visibility.Collapsed;
+            DisableAll("userTableButtons");
+            CurrentUserNumberMoves++;
+            labelNumberMovesOnlyUser.Content = CurrentUserNumberMoves.ToString();
+            labelQuantityMoveUser.Content = "Число ходов: " + CurrentUserNumberMoves.ToString();
+            int[] cellCoordinates = FindCoordinatesButton(currentButton, "left");
             int digit = cellCoordinates[0];
             int letter = cellCoordinates[1];
             if (tableUserFoxes.TableFoxes[digit][letter].Value.Equals('f'))
             {
+                labelFoxes[tableUserFoxes.CountDeadFoxes].Background = new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/fox.png"))); 
                 tableUserFoxes.CountDeadFoxes++;
+                EnableAll("userTableButtons");
                 if (tableUserFoxes.CountDeadFoxes == tableUserFoxes.NumberFox)
                 {
-                    DisableAllButtons("userTable");
-                    MessageBox.Show("Вы победили! Поздравляем!");                    
+                    DisableAll("userTableButtons");
+                    MessageBox.Show("Вы победили! Поздравляем!");
                 }
             }
             else
             {
-                DispatcherTimer timer = new DispatcherTimer();
-                timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
-                EventHandler eh = null;
-                bool flag = true;
-                eh = (object mySender, EventArgs args) =>
+                if (CurrentTypeGame.Equals("На минимальное число ходов"))
                 {
-                    if (flag == true)
+                    EnableAll("userTableButtons");
+                }
+                else
+                {
+                    ComputerMove();
+                }
+            }            
+        }
+        private void ComputerMove()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            EventHandler eh = null;
+            bool flag = true;
+            eh = (object mySender, EventArgs args) =>
+            {
+                if (flag == true)
+                {
+                    int[] cell = tableCompFoxes.DoShot(CurrentTypeGame);
+                    CurrentComputerNumberMoves++;
+                    labelQuantityMoveComp.Content = "Число ходов: " + CurrentComputerNumberMoves.ToString();
+                    cellAndButtonLabelTableRight[cell[0] * 9 + cell[1]].Button.Visibility = Visibility.Collapsed;
+                    if (tableCompFoxes.CountDeadFoxes == tableCompFoxes.NumberFox)
                     {
-                        int[] cell = tableCompFoxes.DoShot();
-                        cellAndButtonLabelTableRight[cell[0] * 9 + cell[1]].Button.Visibility = Visibility.Collapsed;
-                        if (tableCompFoxes.CountDeadFoxes == tableCompFoxes.NumberFox)
-                        {
-                            DisableAllButtons("userTable");
-                            MessageBox.Show("Вы проиграли!");
-                            flag = false;
-                        }
-                        if (tableCompFoxes.TableFoxes[cell[0]][cell[1]].Value != 'f')
-                        {
-                            flag = false;
-                        }
+                        DisableAll("userTableButtons");
+                        MessageBox.Show("Вы проиграли!");
+                        flag = false;
                     }
-                    else
+                    if (tableCompFoxes.TableFoxes[cell[0]][cell[1]].Value != 'f')
                     {
-                        timer.Stop();
+                        flag = false;
+                        EnableAll("userTableButtons");
                     }
-                };
-                timer.Tick += eh;
-                timer.Start();
-            }
+                }
+                else
+                {
+                    timer.Stop();
+                }
+            };
+            timer.Tick += eh;
+            timer.Start();
         }
         private void CommonButtonFox_Click(object sender, RoutedEventArgs e)
         {            
@@ -171,7 +281,7 @@ namespace huntingFoxes
             {
                 ((Button)sender).Content = "лис";
                 //((Button)sender).Background = new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/foxBW.jpg"))); 
-                UpdateLabel("computerTable");
+                UpdateLabel("computerTableButtons");
             }
             else
             {
@@ -181,8 +291,8 @@ namespace huntingFoxes
             }
             if (tableCompFoxes.CountFoxes() == tableCompFoxes.NumberFox)
             {
-                DisableAllButtons("computerTable");
-                EnableAllButtons("userTable");
+                DisableAll("computerTableButtons");
+                EnableAll("userTableButtons");
             }
         }
 
@@ -223,33 +333,27 @@ namespace huntingFoxes
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    cellAndButtonLabelTableLeft[i * 9 + j].Button.Visibility = Visibility.Collapsed;
-                    cellAndButtonLabelTableRight[i * 9 + j].Button.Visibility = Visibility.Collapsed;
-                }
-            }
+            InvisibleAll("userTableButtons");
+            InvisibleAll("computerTableButtons");
         }
-        private void DisableAllButtons(string flagTable)
+        private void DisableAll(string flagTable)
         {
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    switch (flagTable) { 
-                        case "userTable":
+                    switch (flagTable) {
+                        case "userTableButtons":
                             cellAndButtonLabelTableLeft[i * 9 + j].Button.IsEnabled = false;
                             break;
-                        case "computerTable":
+                        case "computerTableButtons":
                             cellAndButtonLabelTableRight[i * 9 + j].Button.IsEnabled = false;
                             break;
                     }
                 }
             }
         }
-        private void EnableAllButtons(string flagTable)
+        private void EnableAll(string flagTable)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -257,28 +361,65 @@ namespace huntingFoxes
                 {
                     switch (flagTable)
                     {
-                        case "userTable":
+                        case "userTableButtons":
                             cellAndButtonLabelTableLeft[i * 9 + j].Button.IsEnabled = true;
                             break;
-                        case "computerTable":
+                        case "computerTableButtons":
                             cellAndButtonLabelTableRight[i * 9 + j].Button.IsEnabled = true;
                             break;
                     }
                 }
             }
         }
-        private void VisibleAllAllButtons()
+        private void VisibleAll(string flagTable)
         {
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    cellAndButtonLabelTableLeft[i * 9 + j].Button.Visibility = Visibility.Visible;
-                    cellAndButtonLabelTableRight[i * 9 + j].Button.Visibility = Visibility.Visible;
+                    switch (flagTable)
+                    {
+                        case "userTableButtons":
+                            cellAndButtonLabelTableLeft[i * 9 + j].Button.Visibility = Visibility.Visible;
+                            break;
+                        case "computerTableButtons":
+                            cellAndButtonLabelTableRight[i * 9 + j].Button.Visibility = Visibility.Visible;
+                            break;
+                        case "userTableLabels":
+                            cellAndButtonLabelTableLeft[i * 9 + j].Label.Visibility = Visibility.Visible;
+                            break;
+                        case "computerTableLabels":
+                            cellAndButtonLabelTableRight[i * 9 + j].Label.Visibility = Visibility.Visible;
+                            break;
+                    }
                 }
             }
         }
-        private void CreateButtonLabelTableLeftRight()
+        private void InvisibleAll(string flagTable)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    switch (flagTable)
+                    {
+                        case "userTableButtons":
+                            cellAndButtonLabelTableLeft[i * 9 + j].Button.Visibility = Visibility.Collapsed;
+                            break;
+                        case "computerTableButtons":
+                            cellAndButtonLabelTableRight[i * 9 + j].Button.Visibility = Visibility.Collapsed;
+                            break;
+                        case "userTableLabels":
+                            cellAndButtonLabelTableLeft[i * 9 + j].Label.Visibility = Visibility.Collapsed;
+                            break;
+                        case "computerTableLabels":
+                            cellAndButtonLabelTableRight[i * 9 + j].Label.Visibility = Visibility.Collapsed;
+                            break;
+                    }
+                }
+            }
+        }
+        private void CreateButtonLabelTableLeft()
         {
             Label[][] labelsLeft = { new Label[] { a1, b1, c1, d1, e1, f1, g1, h1, i1 }, 
                                     new Label[] { a2, b2, c2, d2, e2, f2, g2, h2, i2 },
@@ -297,7 +438,20 @@ namespace huntingFoxes
                                     new Button[] { a6Button, b6Button, c6Button, d6Button, e6Button, f6Button, g6Button, h6Button, i6Button }, 
                                     new Button[] { a7Button, b7Button, c7Button, d7Button, e7Button, f7Button, g7Button, h7Button, i7Button }, 
                                     new Button[] { a8Button, b8Button, c8Button, d8Button, e8Button, f8Button, g8Button, h8Button, i8Button }, 
-                                    new Button[] { a9Button, b9Button, c9Button, d9Button, e9Button, f9Button, g9Button, h9Button, i9Button },};
+                                    new Button[] { a9Button, b9Button, c9Button, d9Button, e9Button, f9Button, g9Button, h9Button, i9Button },};            
+            for (int i = 0; i < 9; i++)
+            {
+                int digit = i;
+                for (int j = 0; j < 9; j++)
+                {
+                    int letter = j;
+                    CellAndButtonLabel cellTableLeft = new CellAndButtonLabel(buttonsLeft[i][j], labelsLeft[i][j], digit, letter);
+                    cellAndButtonLabelTableLeft.Add(cellTableLeft);                    
+                }                
+            }
+        }
+        private void CreateButtonLabelTableRight()
+        {
             Label[][] labelsRight = { new Label[] { a1Comp, b1Comp, c1Comp, d1Comp, e1Comp, f1Comp, g1Comp, h1Comp, i1Comp }, 
                                     new Label[] { a2Comp, b2Comp, c2Comp, d2Comp, e2Comp, f2Comp, g2Comp, h2Comp, i2Comp },
                                     new Label[] { a3Comp, b3Comp, c3Comp, d3Comp, e3Comp, f3Comp, g3Comp, h3Comp, i3Comp }, 
@@ -316,22 +470,37 @@ namespace huntingFoxes
                                     new Button[] { a7ButtonComp, b7ButtonComp, c7ButtonComp, d7ButtonComp, e7ButtonComp, f7ButtonComp, g7ButtonComp, h7ButtonComp, i7ButtonComp }, 
                                     new Button[] { a8ButtonComp, b8ButtonComp, c8ButtonComp, d8ButtonComp, e8ButtonComp, f8ButtonComp, g8ButtonComp, h8ButtonComp, i8ButtonComp }, 
                                     new Button[] { a9ButtonComp, b9ButtonComp, c9ButtonComp, d9ButtonComp, e9ButtonComp, f9ButtonComp, g9ButtonComp, h9ButtonComp, i9ButtonComp },};
-
             for (int i = 0; i < 9; i++)
             {
                 int digit = i;
                 for (int j = 0; j < 9; j++)
                 {
                     int letter = j;
-                    CellAndButtonLabel cellTableLeft = new CellAndButtonLabel(buttonsLeft[i][j], labelsLeft[i][j], digit, letter);
                     CellAndButtonLabel cellTableRight = new CellAndButtonLabel(buttonsRight[i][j], labelsRight[i][j], digit, letter);
-                    cellAndButtonLabelTableLeft.Add(cellTableLeft);
                     cellAndButtonLabelTableRight.Add(cellTableRight);
                 }
-                
             }
         }
-
+        private void VisibleCoordinatesComputer(bool flagVisible)
+        {
+            Label[] labelComputer = {coordinateComp1, coordinateComp2, coordinateComp3,
+                                    coordinateComp4, coordinateComp5, coordinateComp6,
+                                    coordinateComp7, coordinateComp8, coordinateComp9,
+                                    coordinateCompA, coordinateCompB, coordinateCompC,
+                                    coordinateCompD, coordinateCompE, coordinateCompF,
+                                    coordinateCompG, coordinateCompH, coordinateCompI};
+            foreach (var item in labelComputer)
+            {
+                if (flagVisible)
+                {
+                    item.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    item.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
         private void menuItemNewGame_Click(object sender, RoutedEventArgs e)
         {          
             tableUserFoxes = null;
@@ -341,17 +510,10 @@ namespace huntingFoxes
             ComputerFoxesTable tableCompFoxesNew = new ComputerFoxesTable(CurrentNumFoxes);
             tableUserFoxes = tableUserFoxesNew;
             tableCompFoxes = tableCompFoxesNew;
-            UpdateForNewGame();
+            CreateNewGame();
         }
 
-        public void UpdateForNewGame()
-        {
-            UpdateLabel("userTable");
-            UpdateLabel("computerTable");
-            VisibleAllAllButtons();
-            DisableAllButtons("userTable");
-            EnableAllButtons("computerTable");
-        }
+        
 
         private void menuItemExit_Click(object sender, RoutedEventArgs e)
         {
@@ -378,11 +540,12 @@ namespace huntingFoxes
 
         private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            List<string> option = new List<string>();
-            option.Add(CurrentNumFoxes.ToString());
-            option.Add(CurentBackgroundPath);
+            //List<string> option = new List<string>();
+            //option.Add(CurrentTypeGame);
+            //option.Add(CurrentNumFoxes.ToString());
+            //option.Add(CurentBackgroundPath);
 
-            File.WriteAllLines((Directory.GetCurrentDirectory() + "/option.txt"), option);
+            //File.WriteAllLines((Directory.GetCurrentDirectory() + "/option.txt"), option);
 
             
         }
@@ -393,11 +556,15 @@ namespace huntingFoxes
                 string[] linesRulesGame = File.ReadAllLines(fileWithOption);
                 if (!linesRulesGame[0].Equals(""))
                 {
-                    CurrentNumFoxes = Convert.ToInt32(linesRulesGame[0]);
+                    CurrentTypeGame = linesRulesGame[0];
                 }
                 if (!linesRulesGame[1].Equals(""))
                 {
-                    CurentBackgroundPath = linesRulesGame[1];
+                    CurrentNumFoxes = Convert.ToInt32(linesRulesGame[1]);
+                }
+                if (!linesRulesGame[2].Equals(""))
+                {
+                    CurentBackgroundPath = linesRulesGame[2];
                 }
                 
             }

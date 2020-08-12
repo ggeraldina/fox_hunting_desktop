@@ -19,7 +19,7 @@ namespace foxesTable
             get;
             set;
         }
-        public char Value // f - fox; number foxes: 0; 1; 2; 3; 4
+        public char Value // f - fox; number foxes: 0; 1; 2; 3; 4...8
         {
             get;
             set;

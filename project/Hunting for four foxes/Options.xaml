@@ -4,21 +4,24 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="huntingFoxes.Options"
         Title="Параметры" ResizeMode="CanMinimize" Height="361.745" Width="371.386" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="Выбрать число лис" HorizontalAlignment="Center" Height="68" Margin="11,1,8.8,0" VerticalAlignment="Top" Width="345" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Globus" FontSize="36"/>
-        <Label Content="Выбрать фон" HorizontalAlignment="Center" Height="68" Margin="10,136,9.8,0" VerticalAlignment="Top" Width="345" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Globus" FontSize="36"/>
-        <StackPanel Margin="0,217,-0.2,0" Orientation="Vertical">
-            <DockPanel HorizontalAlignment="Left" Height="28" Margin="26,0,0,0" VerticalAlignment="Top" Width="318">
-                <Button x:Name="buttonSelectBackground" Content="Выбрать файл" IsDefault="True" Width="145" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Margin="0,0,0,0" Click="buttonSelectBackground_Click"/>
-                <Button x:Name="buttonOriginalBackground" Content="Установить базовый" IsDefault="True" Width="145" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Margin="0,0,0,0.2" Click="buttonOriginalBackground_Click"/>
-            </DockPanel>
-        </StackPanel>
+        <Label Content="Выбрать число лис" HorizontalAlignment="Center" Height="68" Margin="0,91,0,0" VerticalAlignment="Top" Width="345" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Impact" FontSize="36"/>
+        <Label Content="Выбрать фон" HorizontalAlignment="Center" Height="59" Margin="10,176,9.8,0" VerticalAlignment="Top" Width="345" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Impact" FontSize="36"/>
+
+        <DockPanel HorizontalAlignment="Center" Height="28" Margin="0,232,0,0" VerticalAlignment="Top" Width="318" RenderTransformOrigin="0.5,-1.093">
+            <Button x:Name="buttonSelectBackground" Content="Выбрать файл" IsDefault="True" Width="147" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Click="buttonSelectBackground_Click" Margin="0"/>
+            <Button x:Name="buttonOriginalBackground" Content="Установить базовый" IsDefault="True" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Click="buttonOriginalBackground_Click"/>
+        </DockPanel>
+
         <WrapPanel HorizontalAlignment="Left" Height="55" Margin="10,269,0,0" VerticalAlignment="Top" Width="345">
-            <Button x:Name="buttonOK" Content="OK" IsDefault="True" Height="28" Width="82" Margin="251,14,0,0" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Padding="2,2,2,3" Click="buttonOK_Click" />
+            <Button x:Name="buttonOK" Content="OK" IsDefault="True" Height="28" Width="82" Margin="249,14,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Padding="2,2,2,3" Click="buttonOK_Click" />
         </WrapPanel>
-        <DockPanel HorizontalAlignment="Left" Height="28" Margin="27,74,0,0" VerticalAlignment="Top" Width="318">
-            <ComboBox x:Name="comboBoxSelectQuantity" HorizontalAlignment="Left" Height="28" Width="145" Text="4" HorizontalContentAlignment="Center" Margin="0,0,0,0" VerticalContentAlignment="Bottom" Padding="4,3,4,5" FontSize="14"/>
-            
-            <Button x:Name="buttonSave" IsDefault="True" Width="145" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Margin="0,0,0,-0.8" Content="Сохранить" Click="buttonSave_Click" />
+        <DockPanel HorizontalAlignment="Center" Height="28" Margin="0,153,0,0" VerticalAlignment="Top" Width="318">
+            <ComboBox x:Name="comboBoxSelectQuantity" HorizontalAlignment="Center" Height="28" Width="103" Text="4" HorizontalContentAlignment="Center" Margin="0,0,0,0" VerticalContentAlignment="Bottom" Padding="4,3,4,5" FontSize="14"/>
+        </DockPanel>
+        <Label Content="Выбрать тип игры" HorizontalAlignment="Center" Height="68" Margin="0,8,0,0" VerticalAlignment="Top" Width="345" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Impact" FontSize="36"/>
+        <DockPanel HorizontalAlignment="Center" Height="28" Margin="0,70,0,0" VerticalAlignment="Top" Width="318">
+            <ComboBox x:Name="comboBoxTypeGame" HorizontalAlignment="Center" Height="28" Width="313" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Padding="4,3,4,5" FontSize="14" SelectedIndex="0" IsReadOnly="True"/>
+
         </DockPanel>
     </Grid>
 </Window>

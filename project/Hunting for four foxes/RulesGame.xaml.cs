@@ -23,7 +23,7 @@ namespace huntingFoxes
         public RulesGame()
         {
             InitializeComponent();
-            this.textBlockRulesGame.Text = "";
+            this.textBoxRulesGame.Text = "";
             try
             {
                 string fileWithRulesGame = (new Uri(Directory.GetCurrentDirectory() + "/rules of the game.txt")).OriginalString;
@@ -31,8 +31,8 @@ namespace huntingFoxes
                 string[] linesRulesGame = File.ReadAllLines(fileWithRulesGame, enc);
                 foreach (string lrg in linesRulesGame)
                 {
-                    this.textBlockRulesGame.Text += lrg;
-                    this.textBlockRulesGame.Text += "\n";
+                    this.textBoxRulesGame.Text += lrg;
+                    this.textBoxRulesGame.Text += "\n";
                 }
             }
             catch (IOException ioex)

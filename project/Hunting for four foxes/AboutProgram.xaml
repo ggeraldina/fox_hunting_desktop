@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AboutProgram" ResizeMode="CanMinimize" Height="445.851" Width="357.23" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFF3F3F3">
-        <Label x:Name="labelTitle" Content="Label" HorizontalAlignment="Left" Height="63" Margin="83,10,0,0" VerticalAlignment="Top" Width="247" FontWeight="Bold" BorderBrush="Gray" BorderThickness="0,0,0,1" FontSize="36" FontFamily="Globus"/>
+        <Label x:Name="labelTitle" Content="Label" HorizontalAlignment="Left" Height="63" Margin="83,10,0,0" VerticalAlignment="Top" Width="247" FontWeight="Bold" BorderBrush="Gray" BorderThickness="0,0,0,1" FontSize="36" FontFamily="Impact"/>
         <Label x:Name="labelProductName" Content="Label" HorizontalAlignment="Left" Height="35" Margin="21,73,0,0" VerticalAlignment="Top" Width="309"/>
         <Label x:Name="labelVersion" Content="Label" HorizontalAlignment="Left" Height="35" Margin="21,108,0,0" VerticalAlignment="Top" Width="309"/>
         <Label x:Name="labelCopyright" Content="Label" HorizontalAlignment="Left" Height="95" Margin="21,143,0,0" VerticalAlignment="Top" Width="309" BorderBrush="Gray" BorderThickness="0,0,0,1"/>

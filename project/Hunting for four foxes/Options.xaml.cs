@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using System.IO;
 using foxesTable;
 namespace huntingFoxes
 {
@@ -31,6 +32,7 @@ namespace huntingFoxes
             InitializeComponent();
             this.gridBase = mainWindow.gridBase;
             this.mainWindow = mainWindow;
+            UpdateComboBoxTypeGame();
             UpdateComboBoxSelectQuantity();
         }
         private void buttonSelectBackground_Click(object sender, RoutedEventArgs e)
@@ -57,37 +59,73 @@ namespace huntingFoxes
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            buttonSave_Click(sender, e);
+            string typeGame = comboBoxTypeGame.SelectedItem.ToString();
+            string numFoxes = comboBoxSelectQuantity.SelectedItem.ToString();
+            bool flagNewGame = true;
+            if(typeGame.Equals(mainWindow.CurrentTypeGame) && numFoxes.Equals(mainWindow.CurrentNumFoxes.ToString()))
+            {
+                flagNewGame = false;
+            }
+            List<string> option = new List<string>();
+            option.Add(typeGame);
+            option.Add(numFoxes);
+            option.Add(mainWindow.CurentBackgroundPath);
+            File.WriteAllLines((Directory.GetCurrentDirectory() + "/option.txt"), option);
+            if (flagNewGame)
+            {
+                mainWindow.CreateNewGame();
+            }
             this.DialogResult = true;
         }
-
+        private void UpdateComboBoxTypeGame()
+        {
+            string[] queryResults = { "На минимальное число ходов", 
+                                        "Против компьютера (сложный уровень)", 
+                                        "Против компьютера (средний уровень)", 
+                                        "Против компьютера (простой уровень)"};
+            int currentIndex = 0;
+            int count = 0;
+            foreach (var item in queryResults)
+            {
+                comboBoxTypeGame.Items.Add(item);
+               if (mainWindow.CurrentTypeGame.Equals(item))
+                {
+                    currentIndex = count;
+                }
+                count++;
+            }
+            comboBoxTypeGame.SelectedIndex = currentIndex;
+        }
         private void UpdateComboBoxSelectQuantity(){
-            QuantityFoxDataContext quantityFoxDataContext = new QuantityFoxDataContext();
-            var queryResults = 
-                from q in quantityFoxDataContext.QuantityFoxes
-                select q;
+            int[] queryResults = {3, 4, 5, 6, 7, 8};
             int currentIndex = 0;
             foreach (var item in queryResults)
             {
-                comboBoxSelectQuantity.ItemsSource += item.Quantity.ToString();
-                if (mainWindow.CurrentNumFoxes == item.Quantity)
+                comboBoxSelectQuantity.ItemsSource += item.ToString();
+                if (mainWindow.CurrentNumFoxes == item)
                 {
-                    currentIndex = item.Key - 1;
+                    currentIndex = item - 3;
                 }
             }
             comboBoxSelectQuantity.SelectedIndex = currentIndex;
         }
 
-        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        private void SaveTypeGame_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.CurrentTypeGame = comboBoxTypeGame.SelectedItem.ToString();
+            mainWindow.labelTypeGame.Content = "Тип игры: " + mainWindow.CurrentTypeGame;
+        }
+        private void SaveSelectQuantity_Click(object sender, RoutedEventArgs e)
         {
             int numFoxes = Convert.ToInt32(comboBoxSelectQuantity.SelectedItem.ToString());
             mainWindow.CurrentNumFoxes = numFoxes;
-            mainWindow.labelQuantity.Content = "Число лис на поле = " + numFoxes.ToString();
-            UserFoxesTable tableUserFoxesNew = new UserFoxesTable(numFoxes);
-            ComputerFoxesTable tableCompFoxesNew = new ComputerFoxesTable(numFoxes);
-            mainWindow.TableUserFoxes = tableUserFoxesNew;
-            mainWindow.TableCompFoxes = tableCompFoxesNew;
-            mainWindow.UpdateForNewGame();
+            //mainWindow.labelQuantity.Content = "Число лис на поле = " + numFoxes.ToString();
+            //UserFoxesTable tableUserFoxesNew = new UserFoxesTable(numFoxes);
+            //ComputerFoxesTable tableCompFoxesNew = new ComputerFoxesTable(numFoxes);
+            //mainWindow.TableUserFoxes = tableUserFoxesNew;
+            //mainWindow.TableCompFoxes = tableCompFoxesNew;
+            //mainWindow.UpdateForNewGame();
+           
         }
     }
 }

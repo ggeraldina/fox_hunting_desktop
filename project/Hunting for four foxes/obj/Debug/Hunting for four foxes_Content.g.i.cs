@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quantitysql.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quantitysql_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fox.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("withoutfox.png")]
 
 
