@@ -1,0 +1,26 @@
+﻿<Window x:Class="huntingFoxes.AboutProgram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AboutProgram" ResizeMode="CanMinimize" Height="445.851" Width="357.23" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFF3F3F3">
+        <Label x:Name="labelTitle" Content="Label" HorizontalAlignment="Left" Height="35" Margin="83,38,0,0" VerticalAlignment="Top" Width="247" FontWeight="Bold" BorderBrush="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+        <Label x:Name="labelProductName" Content="Label" HorizontalAlignment="Left" Height="35" Margin="21,73,0,0" VerticalAlignment="Top" Width="309"/>
+        <Label x:Name="labelVersion" Content="Label" HorizontalAlignment="Left" Height="35" Margin="21,108,0,0" VerticalAlignment="Top" Width="309"/>
+        <Label x:Name="labelCopyright" Content="Label" HorizontalAlignment="Left" Height="95" Margin="21,143,0,0" VerticalAlignment="Top" Width="309" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+        <TextBlock x:Name="Description" HorizontalAlignment="Left" Height="93" Margin="21,254,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="309" Padding="10,7,7,7">
+            <TextBlock.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+            </TextBlock.Background>
+        </TextBlock>
+        <WrapPanel HorizontalAlignment="Left" Height="58" Margin="21,352,0,0" VerticalAlignment="Top" Width="309">
+            <Button Content="OK" IsDefault="True" Height="28" Width="82" Margin="226,13,0,0" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Padding="2,2,2,3" Click="Button_Click">
+
+            </Button>
+        </WrapPanel>
+        <Label x:Name="labelLogo" Content="Label" HorizontalAlignment="Left" Height="60" Margin="21,10,0,0" VerticalAlignment="Top" Width="60"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,5 @@
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\computerFoxes\bin\Debug\computerFoxes.dll
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\computerFoxes\bin\Debug\computerFoxes.pdb
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\computerFoxes\obj\Debug\foxesTable.csprojResolveAssemblyReference.cache
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\computerFoxes\obj\Debug\computerFoxes.dll
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\computerFoxes\obj\Debug\computerFoxes.pdb

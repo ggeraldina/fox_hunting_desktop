@@ -1,0 +1,15 @@
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\Hunting for four foxes.exe.config
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\Hunting for four foxes.exe
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\Hunting for four foxes.pdb
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\computerFoxes.dll
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\computerFoxes.pdb
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\HuntingForFourFoxes.csprojResolveAssemblyReference.cache
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\MainWindow.baml
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\MainWindow.g.cs
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\App.g.cs
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Hunting for four foxes_MarkupCompile.cache
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Hunting for four foxes.g.resources
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\HuntingForFourFoxes.Properties.Resources.resources
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\HuntingForFourFoxes.csproj.GenerateResource.Cache
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Hunting for four foxes.exe
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Hunting for four foxes.pdb
