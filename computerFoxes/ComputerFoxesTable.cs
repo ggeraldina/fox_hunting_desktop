@@ -21,6 +21,11 @@ namespace foxesTable
         {
             CreateEmptyTable();
         }
+        public ComputerFoxesTable(int numFox)
+        {
+            CreateEmptyTable();
+            this.NumberFox = numFox;
+        }
         public bool AddFox(int rowFox, int columnFox)
         {
             bool flagCanNotBeLocated = BypassNeighboringCells(rowFox, columnFox, "flagCanNotBeLocated");

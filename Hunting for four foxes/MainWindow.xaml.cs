@@ -16,6 +16,7 @@ using System.Collections;
 using System.Windows.Threading;
 using System.IO;
 using foxesTable;
+
 namespace huntingFoxes
 {
     /// <summary>
@@ -24,17 +25,47 @@ namespace huntingFoxes
     public partial class MainWindow : Window
     {
         // For user
-        private UserFoxesTable tableUserFoxes = new UserFoxesTable();
+        private UserFoxesTable tableUserFoxes;
         // For computer
-        private ComputerFoxesTable tableCompFoxes = new ComputerFoxesTable();
+        private ComputerFoxesTable tableCompFoxes;
         // User table of coordinates of buttons and labels
         private List<CellAndButtonLabel> cellAndButtonLabelTableLeft = new List<CellAndButtonLabel>();
         // Computer table of coordinates of buttons and labels
         private List<CellAndButtonLabel> cellAndButtonLabelTableRight = new List<CellAndButtonLabel>();
-        
+        public int CurrentNumFoxes { get; set; }
+        public string CurentBackgroundPath { get; set; }
+
+        public UserFoxesTable TableUserFoxes
+        {
+            get
+            {
+                return tableUserFoxes;
+            }
+            set
+            {
+                tableUserFoxes = value;
+            }
+        }
+        public ComputerFoxesTable TableCompFoxes
+        {
+            get
+            {
+                return tableCompFoxes;
+            }
+            set
+            {
+                tableCompFoxes = value;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            CurrentNumFoxes = 4;
+            CurentBackgroundPath = "";
+            UpdateOption();
+            labelQuantity.Content = "Число лис на поле = "+ CurrentNumFoxes.ToString();
+            tableUserFoxes = new UserFoxesTable(CurrentNumFoxes);
+            tableCompFoxes = new ComputerFoxesTable(CurrentNumFoxes);
             CreateButtonLabelTableLeftRight();
             UpdateLabel("userTable");
             DisableAllButtons("userTable");
@@ -138,7 +169,7 @@ namespace huntingFoxes
             // If it is possible to add a this fox, then add
             if (tableCompFoxes.AddFox(digit, letter))
             {
-                ((Button)sender).Content = "лиса";
+                ((Button)sender).Content = "лис";
                 //((Button)sender).Background = new ImageBrush(new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/foxBW.jpg"))); 
                 UpdateLabel("computerTable");
             }
@@ -305,10 +336,16 @@ namespace huntingFoxes
         {          
             tableUserFoxes = null;
             tableCompFoxes = null;
-            UserFoxesTable tableUserFoxesNew = new UserFoxesTable();
-            ComputerFoxesTable tableCompFoxesNew = new ComputerFoxesTable();
+            labelQuantity.Content = "Число лис на поле = " + CurrentNumFoxes.ToString();
+            UserFoxesTable tableUserFoxesNew = new UserFoxesTable(CurrentNumFoxes);
+            ComputerFoxesTable tableCompFoxesNew = new ComputerFoxesTable(CurrentNumFoxes);
             tableUserFoxes = tableUserFoxesNew;
             tableCompFoxes = tableCompFoxesNew;
+            UpdateForNewGame();
+        }
+
+        public void UpdateForNewGame()
+        {
             UpdateLabel("userTable");
             UpdateLabel("computerTable");
             VisibleAllAllButtons();
@@ -321,10 +358,66 @@ namespace huntingFoxes
             Application.Current.Shutdown();
         }
 
-        private void AboutProgram_Click(object sender, RoutedEventArgs e)
+        private void menuItemAboutProgram_Click(object sender, RoutedEventArgs e)
         {
             AboutProgram windowAboutProgram = new AboutProgram();
             windowAboutProgram.ShowDialog();
         }
+
+        private void menuItemViewHelp_Click(object sender, RoutedEventArgs e)
+        {
+            RulesGame windowRulesGame = new RulesGame();
+            windowRulesGame.ShowDialog();
+        }
+
+        private void menuItemOptions_Click(object sender, RoutedEventArgs e)
+        {
+            Options windowOptions = new Options(this);
+            windowOptions.ShowDialog();
+        }
+
+        private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            List<string> option = new List<string>();
+            option.Add(CurrentNumFoxes.ToString());
+            option.Add(CurentBackgroundPath);
+
+            File.WriteAllLines((Directory.GetCurrentDirectory() + "/option.txt"), option);
+
+            
+        }
+        private void UpdateOption(){
+            try
+            {
+                string fileWithOption = (new Uri(Directory.GetCurrentDirectory() + "/option.txt")).OriginalString;
+                string[] linesRulesGame = File.ReadAllLines(fileWithOption);
+                if (!linesRulesGame[0].Equals(""))
+                {
+                    CurrentNumFoxes = Convert.ToInt32(linesRulesGame[0]);
+                }
+                if (!linesRulesGame[1].Equals(""))
+                {
+                    CurentBackgroundPath = linesRulesGame[1];
+                }
+                
+            }
+            catch (IOException ioex)
+            {
+                Console.WriteLine(ioex.Message);
+            }
+            if (!CurentBackgroundPath.Equals(""))
+            {
+                try
+                {
+                    gridBase.Background = new ImageBrush(new BitmapImage(new Uri(CurentBackgroundPath)));
+                }
+                catch
+                {
+                    CurentBackgroundPath = "";
+                }
+            }
+        }
+
+        
     }
 }

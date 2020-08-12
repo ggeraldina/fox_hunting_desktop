@@ -26,6 +26,15 @@ namespace foxesTable
             CountCellValuesFox();
         }
 
+        public UserFoxesTable(int numFox)
+        {
+            tableFoxes = new List<List<CellTable>>();
+            CreateEmptyTable();
+            this.CountDeadFoxes = 0;
+            this.NumberFox = numFox;
+            AddFoxes();
+            CountCellValuesFox();
+        }
 
         private void AddFoxes()
         {

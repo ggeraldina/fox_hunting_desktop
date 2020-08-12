@@ -44,7 +44,7 @@ namespace huntingFoxes
             this.Description.Text = description.Description;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }

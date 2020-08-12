@@ -11,7 +11,7 @@ namespace foxesTable
         protected List<CellTable> foxes = new List<CellTable>();
         protected List<List<CellTable>> tableFoxes = new List<List<CellTable>>();
         protected int countDeadFoxes = 0;
-        protected static int numberFox = 4;
+        protected int numberFox = 4;
         protected int countDeadFoxesAround = 0;
 
         public int CountFoxes()
@@ -52,6 +52,10 @@ namespace foxesTable
             get
             {
                 return numberFox;
+            }
+            set
+            {
+                numberFox = value;
             }
         }
 

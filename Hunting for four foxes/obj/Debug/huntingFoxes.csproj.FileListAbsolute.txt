@@ -15,3 +15,10 @@ C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\
 C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Hunting for four foxes.pdb
 C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\AboutProgram.baml
 C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\AboutProgram.g.cs
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\RulesGame.baml
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\RulesGame.g.cs
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Options.baml
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Options.g.cs
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\QuantitySQL.mdf
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\bin\Debug\QuantitySQL_log.ldf
+C:\Users\Geraldina\Documents\Visual Studio 2013\Projects\Hunting for four foxes\Hunting for four foxes\obj\Debug\Hunting for four foxes_Content.g.cs

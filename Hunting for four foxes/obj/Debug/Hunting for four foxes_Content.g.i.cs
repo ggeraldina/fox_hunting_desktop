@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fox.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quantitysql.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quantitysql_log.ldf")]
 
 
